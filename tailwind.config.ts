@@ -7,12 +7,22 @@ const config: Config = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    // Add our Colors here
+    colors: {
+
+    },
     extend: {
+      navbar: {
+      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+      // We add our font families in here
+      fontFamily: {
+
+      }
     },
   },
   plugins: [],
