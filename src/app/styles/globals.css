@@ -16,10 +16,9 @@
 body {
   background-color: var(--bg-color);
   width: 100%;
+  font-family: "Geist Mono";
   height: 100%;
 }
-
-
 
 .blob{
   position: fixed;

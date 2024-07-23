@@ -21,7 +21,8 @@ const config: Config = {
       },
       // We add our font families in here
       fontFamily: {
-
+        sans: ['var(--font-geist-sans)'],
+        mono: ['var(--font-geist-mono)'],
       }
     },
   },
