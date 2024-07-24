@@ -9,6 +9,11 @@
   flex-wrap: wrap;
 }
 
+.logo:hover{
+  transform: rotate(360deg);
+  transition: all 0.9s ease-in-out;
+}
+
 .navbar span {
   display: flex;
   gap: 1rem;
@@ -17,7 +22,6 @@
 
 
 .button {
-  border: 1px solid #010;
   height: 100%;
   width: 100%;
   max-width:300px;
@@ -25,11 +29,13 @@
   max-height: 70px;
   color: #000;
   padding: 0.5rem 1rem;
-  border-radius: 5px;
+  border-radius: 30px;
   cursor: pointer;
   box-shadow: 3px 1px 5px rgba(0, 0, 0, 0.2);
   transition: all 0.3s ease;
 }
+
+
 .button:hover {
   background-color: #000;
   color: #fff;

@@ -9,17 +9,50 @@ export default function Home() {
         <h1
           className=" align-middle font-bold font-mono"
           style={{
-            fontSize: '4rem',
-            textAlign: 'left',
-            padding: '0 1rem',
+            fontSize: '3.5rem',
+            lineHeight: '1.3',
+            lineClamp: 2,
+            textAlign: 'center',
             fontWeight: 800,
-            color: 'red',
+            color: 'rgb(0, 0, 0)',
           }}
         >
-          Ocka!
+          The best way to Generate a{' '}
+          <span
+            style={{
+              color: 'rgb(255, 0, 0)',
+            }}
+          >
+            resume
+          </span>
+          <br />
+          with
+          <span
+            style={{
+              color: 'rgb(255, 0, 0)',
+            }}
+          >
+            {' '}
+            Ai{' '}
+          </span>
+          in seconds!
         </h1>
-        <h2></h2>
         <br />
+      </section>
+      <section className="Hero">
+        <p
+          style={{
+            fontSize: '1rem',
+            lineHeight: '1.4',
+            lineClamp: 2,
+            textAlign: 'center',
+            fontWeight: 500,
+            color: 'rgb(0, 0, 0)',
+          }}
+        >
+          What is Ocka? Ocka is a resume generator that uses Ai to generate
+          resumes in seconds.
+        </p>
       </section>
     </main>
   );
