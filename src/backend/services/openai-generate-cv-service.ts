@@ -28,7 +28,7 @@ export const generateAIOutput = async (
         {
           role: 'system',
           content:
-            'You are an AI assistant specialized in creating expert-level CVs. Your task is to generate comprehensive and professional CVs for users based on their personal information and job descriptions provided.',
+            'You are an AI assistant specialized in creating expert-level CVs. Your task is to generate comprehensive and professional CVs for users based on their personal information and job descriptions provided. ensure the output is well-structured such that it copy paste directly into a Word document.',
         },
         { role: 'user', content: inputData },
       ],

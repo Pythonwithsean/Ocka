@@ -1,4 +1,4 @@
-import { Document, Packer, Paragraph, TextRun } from 'docx';
+import { Document, Packer, Paragraph, TextRun, HeadingLevel } from 'docx';
 
 export const generateWordDoc = async (personalInfo: PersonalInfo, jobDescription: string, generatedText: string): Promise<Buffer> => {
   const doc = new Document({
@@ -6,36 +6,98 @@ export const generateWordDoc = async (personalInfo: PersonalInfo, jobDescription
       {
         properties: {},
         children: [
+          // Personal Information Section
+          new Paragraph({
+            text: "Personal Information",
+            heading: HeadingLevel.HEADING_1,
+            spacing: { after: 200 },
+          }),
           new Paragraph({
             children: [
-              new TextRun({ text: `Name: ${personalInfo.name}`, bold: true }),
-              new TextRun(`\nEmail: ${personalInfo.email}`),
-              new TextRun(`\nPhone: ${personalInfo.phone}`),
-              new TextRun(`\nLinkedIn: ${personalInfo.linkedin}`),
+              new TextRun({ text: `Name: `, bold: true }),
+              new TextRun(personalInfo.name),
             ],
           }),
           new Paragraph({
             children: [
-              new TextRun({ text: '\nExperience', bold: true }),
-              new TextRun(`\n${personalInfo.experience}`),
+              new TextRun({ text: `Email: `, bold: true }),
+              new TextRun(personalInfo.email),
             ],
           }),
           new Paragraph({
             children: [
-              new TextRun({ text: '\nEducation', bold: true }),
-              new TextRun(`\n${personalInfo.education}`),
+              new TextRun({ text: `Phone: `, bold: true }),
+              new TextRun(personalInfo.phone),
             ],
           }),
           new Paragraph({
             children: [
-              new TextRun({ text: '\nJob Description', bold: true }),
-              new TextRun(`\n${jobDescription}`),
+              new TextRun({ text: `LinkedIn: `, bold: true }),
+              new TextRun(personalInfo.linkedin),
             ],
           }),
           new Paragraph({
+            text: '',
+            spacing: { after: 200 },
+          }),
+
+          // Experience Section
+          new Paragraph({
+            text: "Experience",
+            heading: HeadingLevel.HEADING_1,
+            spacing: { after: 200 },
+          }),
+          new Paragraph({
             children: [
-              new TextRun({ text: '\nGenerated CV:', bold: true }),
-              new TextRun(`\n${generatedText}`),
+              new TextRun(personalInfo.experience),
+            ],
+          }),
+          new Paragraph({
+            text: '',
+            spacing: { after: 200 },
+          }),
+
+          // Education Section
+          new Paragraph({
+            text: "Education",
+            heading: HeadingLevel.HEADING_1,
+            spacing: { after: 200 },
+          }),
+          new Paragraph({
+            children: [
+              new TextRun(personalInfo.education),
+            ],
+          }),
+          new Paragraph({
+            text: '',
+            spacing: { after: 200 },
+          }),
+
+          // Job Description Section
+          new Paragraph({
+            text: "Job Description",
+            heading: HeadingLevel.HEADING_1,
+            spacing: { after: 200 },
+          }),
+          new Paragraph({
+            children: [
+              new TextRun(jobDescription),
+            ],
+          }),
+          new Paragraph({
+            text: '',
+            spacing: { after: 200 },
+          }),
+
+          // Generated CV Section
+          new Paragraph({
+            text: "Generated CV",
+            heading: HeadingLevel.HEADING_1,
+            spacing: { after: 200 },
+          }),
+          new Paragraph({
+            children: [
+              new TextRun(generatedText),
             ],
           }),
         ],
