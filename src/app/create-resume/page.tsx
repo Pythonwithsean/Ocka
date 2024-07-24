@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import Cookies from 'js-cookie';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { fab, faLinkedin } from '@fortawesome/free-brands-svg-icons';
+import { fab } from '@fortawesome/free-brands-svg-icons';
 import Header from '../components/Header';
 import PersonalInfoForm from '../components/PersonalInformationForm';
 import JobDescriptionForm from '../components/JobDescriptionForm';
@@ -12,7 +12,7 @@ library.add(fab);
 
 export default function CreateResume() {
   const [step, setStep] = useState<number>(1);
-  const [personalInfo, setPersonalInfo] = useState({
+  const [personalInfo, setPersonalInfo] = useState<PersonalInfo>({
     name: '',
     email: '',
     phone: '',
@@ -69,7 +69,8 @@ export default function CreateResume() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          inputData: `${personalInfo}\n\nJob Description:\n${jobDescription}`,
+          personalInfo,
+          jobDescription,
         }),
       });
 
