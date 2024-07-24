@@ -1,4 +1,5 @@
 import OpenAI from 'openai';
+import { generateWordDoc } from '../services/document-generation-service';
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY!,
@@ -7,7 +8,7 @@ const openai = new OpenAI({
 export const generateAIOutput = async (
   personalInfo: PersonalInfo,
   jobDescription: string
-): Promise<string> => {
+): Promise<Buffer> => {
   try {
     const inputData = `
         Name: ${personalInfo.name}
@@ -34,7 +35,15 @@ export const generateAIOutput = async (
       max_tokens: 1500,
     });
 
-    return response.choices[0].message.content ?? '';
+    const generatedText = response.choices[0].message.content ?? '';
+
+    const buffer = await generateWordDoc(
+      personalInfo,
+      jobDescription,
+      generatedText
+    );
+
+    return buffer;
   } catch (error) {
     console.error('Error generating AI output:', error);
     throw new Error('Failed to generate AI output');

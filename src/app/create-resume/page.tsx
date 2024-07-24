@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import { useState, useEffect } from 'react';
 import Cookies from 'js-cookie';
@@ -18,11 +18,10 @@ export default function CreateResume() {
     phone: '',
     linkedin: '',
     experience: '',
-    education: ''
+    education: '',
   });
   const [jobDescription, setJobDescription] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(false);
-  const [resume, setResume] = useState<string | null>(null);
 
   useEffect(() => {
     const savedPersonalInfo = Cookies.get('personalInfo');
@@ -31,13 +30,21 @@ export default function CreateResume() {
     }
   }, []);
 
-  const handlePersonalInfoChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handlePersonalInfoChange = (
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = event.target;
     setPersonalInfo({ ...personalInfo, [name]: value });
-    Cookies.set('personalInfo', JSON.stringify({ ...personalInfo, [name]: value }), { expires: 7 });
+    Cookies.set(
+      'personalInfo',
+      JSON.stringify({ ...personalInfo, [name]: value }),
+      { expires: 7 }
+    );
   };
 
-  const handleJobDescriptionChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+  const handleJobDescriptionChange = (
+    event: React.ChangeEvent<HTMLTextAreaElement>
+  ) => {
     setJobDescription(event.target.value);
   };
 
@@ -60,7 +67,6 @@ export default function CreateResume() {
     }
 
     setLoading(true);
-    setResume(null);
 
     try {
       const response = await fetch('/api/openai', {
@@ -78,8 +84,14 @@ export default function CreateResume() {
         throw new Error('Failed to generate resume');
       }
 
-      const data = await response.json();
-      setResume(data.output);
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'cv.docx';
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
     } catch (error) {
       console.error('Error generating resume:', error);
       alert('Failed to generate resume. Please try again.');
@@ -91,7 +103,16 @@ export default function CreateResume() {
   return (
     <div style={{ fontFamily: 'Arial, sans-serif' }}>
       <Header />
-      <main style={{ padding: '20px', maxWidth: '600px', margin: '40px auto', backgroundColor: '#fff', borderRadius: '8px', boxShadow: '0 4px 8px rgba(0,0,0,0.1)' }}>
+      <main
+        style={{
+          padding: '20px',
+          maxWidth: '600px',
+          margin: '40px auto',
+          backgroundColor: '#fff',
+          borderRadius: '8px',
+          boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
+        }}
+      >
         {step === 1 ? (
           <PersonalInfoForm
             personalInfo={personalInfo}
@@ -105,7 +126,7 @@ export default function CreateResume() {
             handleGenerateClick={handleGenerateClick}
             handleBackStep={handleBackStep}
             loading={loading}
-            resume={resume}
+            resume={""}
           />
         )}
       </main>

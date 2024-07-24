@@ -3,13 +3,13 @@ import { generateAIOutput } from '../services/openai-generate-cv-service';
 
 export const handleAIRequest = async (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
   if (req.method === 'POST') {
-    // Extract personalInfo and jobDescription from the request body
     const { personalInfo, jobDescription } = req.body as { personalInfo: PersonalInfo; jobDescription: string };
 
     try {
-      // Call the generateAIOutput function with the extracted data
-      const output = await generateAIOutput(personalInfo, jobDescription);
-      res.status(200).json({ output });
+      const buffer = await generateAIOutput(personalInfo, jobDescription);
+      res.setHeader('Content-Disposition', 'attachment; filename=cv.docx');
+      res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document');
+      res.send(buffer);
     } catch (error: any) {
       console.error('Error generating AI output:', error);
       res.status(500).json({ error: error.message });
