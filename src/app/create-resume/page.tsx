@@ -6,23 +6,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFileAlt, faUserEdit, faInfoCircle, faUser, faEnvelope, faPhone, faBriefcase, faGraduationCap, faClipboardList, faCogs, faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { fab, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { library } from '@fortawesome/fontawesome-svg-core';
+import Header from '../components/Header';
 
 library.add(fab);
-
-// Sample Navbar and Header components
-const Navbar = () => (
-  <nav style={{ padding: '10px 20px', backgroundColor: '#e60023', color: '#fff', display: 'flex', alignItems: 'center' }}>
-    <FontAwesomeIcon icon={faFileAlt} style={{ marginRight: '10px' }} />
-    <h1>Ocka</h1>
-  </nav>
-);
-
-const Header = () => (
-  <header style={{ padding: '20px 20px', backgroundColor: '#fff', color: '#333', display: 'flex', alignItems: 'center' }}>
-    <FontAwesomeIcon icon={faUserEdit} style={{ marginRight: '10px' }} />
-    <h2>Create Your Resume</h2>
-  </header>
-);
 
 export default function CreateResume() {
   const [step, setStep] = useState<number>(1);
@@ -95,7 +81,6 @@ export default function CreateResume() {
 
   return (
     <div style={{ fontFamily: 'Arial, sans-serif' }}>
-      <Navbar />
       <Header />
       <main style={{ padding: '20px', maxWidth: '600px', margin: '40px auto', backgroundColor: '#fff', borderRadius: '8px', boxShadow: '0 4px 8px rgba(0,0,0,0.1)' }}>
         {step === 1 && (
