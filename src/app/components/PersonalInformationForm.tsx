@@ -1,6 +1,4 @@
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faEnvelope, faPhone, faBriefcase, faGraduationCap, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 
 interface PersonalInfoFormProps {
   personalInfo: { name: string; email: string; phone: string; linkedin: string; experience: string; education: string };
@@ -10,15 +8,13 @@ interface PersonalInfoFormProps {
 
 const PersonalInfoForm: React.FC<PersonalInfoFormProps> = ({ personalInfo, handlePersonalInfoChange, handleNextStep }) => {
   return (
-    <div>
-      <h3 style={{ color: '#333' }}>
-        <FontAwesomeIcon icon={faUser} style={{ marginRight: '10px' }} />
+    <div style={{ padding: '20px', backgroundColor: '#f9f9f9', borderRadius: '8px', boxShadow: '0 4px 8px rgba(0,0,0,0.1)' }}>
+      <h3 style={{ color: '#333', borderBottom: '2px solid #e60023', paddingBottom: '10px', marginBottom: '20px' }}>
         Personal Information
       </h3>
       {['name', 'email', 'phone', 'linkedin'].map((field) => (
-        <div key={field} style={{ marginBottom: '12px' }}>
-          <label htmlFor={field} style={{ display: 'block', marginBottom: '8px', color: '#333', fontSize: '16px' }}>
-            <FontAwesomeIcon icon={faUser} style={{ marginRight: '5px' }} />
+        <div key={field} style={{ marginBottom: '16px' }}>
+          <label htmlFor={field} style={{ display: 'block', marginBottom: '8px', color: '#555', fontSize: '14px', fontWeight: 'bold' }}>
             {field.charAt(0).toUpperCase() + field.slice(1)}
           </label>
           <input
@@ -27,15 +23,21 @@ const PersonalInfoForm: React.FC<PersonalInfoFormProps> = ({ personalInfo, handl
             type={field === 'email' ? 'email' : field === 'phone' ? 'tel' : 'text'}
             value={(personalInfo as any)[field]}
             onChange={handlePersonalInfoChange}
-            style={{ width: '100%', padding: '12px', border: '1px solid #ccc', borderRadius: '4px', fontSize: '16px' }}
+            style={{
+              width: '100%',
+              padding: '10px 12px',
+              border: '1px solid #ddd',
+              borderRadius: '4px',
+              fontSize: '14px',
+              boxSizing: 'border-box'
+            }}
             placeholder={`Your ${field}`}
           />
         </div>
       ))}
       {['experience', 'education'].map((field) => (
-        <div key={field} style={{ marginBottom: '12px' }}>
-          <label htmlFor={field} style={{ display: 'block', marginBottom: '8px', color: '#333', fontSize: '16px' }}>
-            <FontAwesomeIcon icon={field === 'experience' ? faBriefcase : faGraduationCap} style={{ marginRight: '5px' }} />
+        <div key={field} style={{ marginBottom: '16px' }}>
+          <label htmlFor={field} style={{ display: 'block', marginBottom: '8px', color: '#555', fontSize: '14px', fontWeight: 'bold' }}>
             {field.charAt(0).toUpperCase() + field.slice(1)}
           </label>
           <textarea
@@ -43,7 +45,15 @@ const PersonalInfoForm: React.FC<PersonalInfoFormProps> = ({ personalInfo, handl
             name={field}
             value={(personalInfo as any)[field]}
             onChange={handlePersonalInfoChange}
-            style={{ width: '100%', padding: '12px', border: '1px solid #ccc', borderRadius: '4px', fontSize: '16px', height: '100px' }}
+            style={{
+              width: '100%',
+              padding: '10px 12px',
+              border: '1px solid #ddd',
+              borderRadius: '4px',
+              fontSize: '14px',
+              height: '100px',
+              boxSizing: 'border-box'
+            }}
             placeholder={`Briefly describe your ${field}`}
           />
         </div>
@@ -59,12 +69,12 @@ const PersonalInfoForm: React.FC<PersonalInfoFormProps> = ({ personalInfo, handl
           borderRadius: '4px',
           fontSize: '16px',
           cursor: 'pointer',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center'
+          textAlign: 'center',
+          transition: 'background-color 0.3s ease'
         }}
+        onMouseOver={(e) => (e.currentTarget.style.backgroundColor = '#d4001d')}
+        onMouseOut={(e) => (e.currentTarget.style.backgroundColor = '#e60023')}
       >
-        <FontAwesomeIcon icon={faArrowRight} style={{ marginRight: '8px' }} />
         Next
       </button>
     </div>
