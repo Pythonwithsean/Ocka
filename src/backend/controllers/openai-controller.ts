@@ -4,7 +4,6 @@ import { generateAIOutput } from '../services/openai-generate-cv-service';
 export const handleAIRequest = async (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
   if (req.method === 'POST') {
     const { personalInfo, jobDescription } = req.body as { personalInfo: PersonalInfo; jobDescription: string };
-
     try {
       const buffer = await generateAIOutput(personalInfo, jobDescription);
       res.setHeader('Content-Disposition', 'attachment; filename=cv.docx');

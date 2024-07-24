@@ -12,5 +12,7 @@ Open [http://localhost:5000](http://localhost:5000) with your browser to see the
 
 
 
-![Ocka](https://github.com/user-attachments/assets/d9a677dc-82e0-47bf-ab11-30e9ac349148)
+
+
+
 
