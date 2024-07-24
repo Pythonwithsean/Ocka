@@ -16,7 +16,7 @@
 body {
   background-color: var(--bg-color);
   width: 100%;
-  font-family: "Geist Mono";
+  font-family: Inter, sans-serif;
   height: 100%;
 }
 

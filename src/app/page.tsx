@@ -1,5 +1,5 @@
 import Header from './components/Header';
-import { GeistMono } from 'geist/font/mono';
+import './styles/Home.css';
 export default function Home() {
   return (
     <main>
@@ -9,16 +9,17 @@ export default function Home() {
         <h1
           className=" align-middle font-bold font-mono"
           style={{
-            fontSize: '3rem',
-            textAlign: 'center',
-            margin: '0 auto',
+            fontSize: '4rem',
+            textAlign: 'left',
             padding: '0 1rem',
             fontWeight: 800,
-            fontFamily: GeistMono.className,
+            color: 'red',
           }}
         >
-          Ocka The Best AI CV Generator
+          Ocka!
         </h1>
+        <h2></h2>
+        <br />
       </section>
     </main>
   );
