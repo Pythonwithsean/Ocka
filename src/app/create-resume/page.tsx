@@ -7,6 +7,7 @@ import { fab } from '@fortawesome/free-brands-svg-icons';
 import Header from '../components/Header';
 import PersonalInfoForm from '../components/PersonalInformationForm';
 import JobDescriptionForm from '../components/JobDescriptionForm';
+import TemplateSelection from '../components/TemplateSelection';
 
 library.add(fab);
 
@@ -21,6 +22,7 @@ export default function CreateResume() {
     education: '',
   });
   const [jobDescription, setJobDescription] = useState<string>('');
+  const [template, setTemplate] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
@@ -49,20 +51,28 @@ export default function CreateResume() {
   };
 
   const handleNextStep = () => {
-    if (!personalInfo.name || !personalInfo.email) {
+    if (step === 1 && (!personalInfo.name || !personalInfo.email)) {
       alert('Please fill in at least your name and email.');
       return;
     }
-    setStep(2);
+    if (step === 2 && !jobDescription) {
+      alert('Please enter a job description.');
+      return;
+    }
+    setStep(step + 1);
   };
 
   const handleBackStep = () => {
-    setStep(1);
+    setStep(step - 1);
+  };
+
+  const handleTemplateSelect = (template: string) => {
+    setTemplate(template);
   };
 
   const handleGenerateClick = async () => {
-    if (!jobDescription) {
-      alert('Please enter a job description.');
+    if (!template) {
+      alert('Please select a CV template.');
       return;
     }
 
@@ -77,6 +87,7 @@ export default function CreateResume() {
         body: JSON.stringify({
           personalInfo,
           jobDescription,
+          template,
         }),
       });
 
@@ -106,27 +117,35 @@ export default function CreateResume() {
       <main
         style={{
           padding: '20px',
-          maxWidth: '600px',
+          maxWidth: '800px',
           margin: '40px auto',
           backgroundColor: '#fff',
           borderRadius: '8px',
           boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
         }}
       >
-        {step === 1 ? (
+        {step === 1 && (
           <PersonalInfoForm
             personalInfo={personalInfo}
             handlePersonalInfoChange={handlePersonalInfoChange}
             handleNextStep={handleNextStep}
           />
-        ) : (
+        )}
+        {step === 2 && (
           <JobDescriptionForm
             jobDescription={jobDescription}
             handleJobDescriptionChange={handleJobDescriptionChange}
+            handleNextStep={handleNextStep}
+            handleBackStep={handleBackStep}
+          />
+        )}
+        {step === 3 && (
+          <TemplateSelection
+            selectedTemplate={template}
+            handleTemplateSelect={handleTemplateSelect}
             handleGenerateClick={handleGenerateClick}
             handleBackStep={handleBackStep}
             loading={loading}
-            resume={""}
           />
         )}
       </main>
