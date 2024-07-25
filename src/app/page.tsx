@@ -5,7 +5,12 @@ export default function Home() {
     <main>
       <Header />
       <img src="/images/blob.svg" alt="Blob" className="blob" />
-      <section className="Hero">
+      <section
+        className="Hero"
+        style={{
+          borderBottom: '5px solid red',
+        }}
+      >
         <h1
           className=" align-middle font-bold font-mono"
           style={{
@@ -39,7 +44,31 @@ export default function Home() {
         </h1>
         <br />
       </section>
-      <section className="Hero">
+      <section
+        className="image-container"
+        style={{
+          position: 'absolute',
+          right: '20%',
+          top: '10%',
+        }}
+      >
+        <img
+          src="/images/blob3.svg"
+          alt="CV"
+          style={{
+            width: '100%',
+            maxWidth: '500px',
+            maxHeight: '600px',
+            height: '100%',
+          }}
+        />
+      </section>
+      <section
+        className="Hero"
+        style={{
+          marginTop: '10px',
+        }}
+      >
         <p
           style={{
             fontSize: '1rem',
@@ -52,6 +81,26 @@ export default function Home() {
         >
           What is Ocka? Ocka is a resume generator that uses Ai to generate
           resumes in seconds.
+        </p>
+        <p
+          style={{
+            fontSize: '1rem',
+            lineHeight: '1.4',
+            lineClamp: 2,
+            textAlign: 'center',
+            fontWeight: 500,
+            color: 'rgb(0, 0, 0)',
+          }}
+        >
+          With{' '}
+          <span
+            style={{
+              color: 'red',
+            }}
+          >
+            Ocka
+          </span>{' '}
+          you can have your CV Done in seconds
         </p>
       </section>
     </main>
