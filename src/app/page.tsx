@@ -1,9 +1,6 @@
 import Header from './components/Header';
 import './styles/Home.css';
-import trpc from './utils/trpc-client';
 export default async function Home() {
-  const hello = await trpc.hello.query();
-  console.log('Client', hello);
   return (
     <main>
       <Header />
