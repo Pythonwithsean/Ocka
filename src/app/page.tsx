@@ -1,4 +1,5 @@
 import Header from './components/Header';
+import type { appRouter } from '@/backend/routers/router';
 import './styles/Home.css';
 export default function Home() {
   return (

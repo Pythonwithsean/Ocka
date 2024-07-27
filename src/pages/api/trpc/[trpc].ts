@@ -1,9 +1,7 @@
-import { createNextApiHandler } from '@trpc/server/adapters/next';
-import { createContext } from '../../../server/trpc/context';
-import { router } from '../../../backend/helpers/tRPC';
-import healthRouter from '@/backend/routers/health';
+import * as trpcNext from '@trpc/server/adapters/next';
+import appRouter from '@/backend/routers/router';
 
-export default createNextApiHandler({
-	router: healthRouter,
-	createContext,
+export default trpcNext.createNextApiHandler({
+  router: appRouter,
+  createContext: () => ({}),
 });
