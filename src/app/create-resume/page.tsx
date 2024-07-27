@@ -119,9 +119,9 @@ export default function CreateResume() {
           padding: '20px',
           maxWidth: '800px',
           margin: '40px auto',
-          backgroundColor: '#fff',
+          backgroundColor: 'transparent',
           borderRadius: '8px',
-          boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
+          // boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
         }}
       >
         {step === 1 && (
