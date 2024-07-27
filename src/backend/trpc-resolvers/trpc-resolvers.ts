@@ -1,5 +1,4 @@
 export function helloResolver() {
-	return {
-		greeting: "Hello From server"
-	}
+	return "Hello server Trpc endpoint"
+
 }

@@ -1,7 +1,9 @@
 import Header from './components/Header';
-import type { appRouter } from '@/backend/routers/router';
 import './styles/Home.css';
-export default function Home() {
+import trpc from './utils/trpc-client';
+export default async function Home() {
+  const hello = await trpc.hello.query();
+  console.log('Client', hello);
   return (
     <main>
       <Header />
