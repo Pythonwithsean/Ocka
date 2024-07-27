@@ -12,7 +12,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={GeistMono.className}>
+    <html lang="en" className={GeistMono.className} data-lt-installed="true">
       <body>{children}</body>
     </html>
   );
