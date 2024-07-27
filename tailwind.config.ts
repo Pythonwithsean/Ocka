@@ -8,11 +8,12 @@ const config: Config = {
   ],
   theme: {
     // Add our Colors here
-    colors: {
-
+    navbar: {
     },
+
     extend: {
-      navbar: {
+      color: {
+
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
