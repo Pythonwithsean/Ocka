@@ -1,17 +1,49 @@
 'use client';
+import { ChangeEvent, useState } from 'react';
 import '../styles/Form.css';
 import Navbar from './Navbar';
 
 export default function Form({ type }: { type: 'Login' | 'Signup' }) {
-  type loginformtype = {
-    username: string;
-    password: string;
-  };
-  type signupformtype = {
+  type detailsType = {
     email: string;
     username: string;
     password: string;
   };
+
+  type inputType = 'username' | 'password' | 'email';
+
+  function handleInput(
+    event: ChangeEvent<HTMLInputElement>,
+    inputType: inputType
+  ) {
+    switch (inputType) {
+      case 'email':
+        setDetails((prev) => ({
+          ...prev,
+          email: event.target.value,
+        }));
+
+        break;
+      case 'password':
+        setDetails((prev) => ({
+          ...prev,
+          password: event.target.value,
+        }));
+        break;
+      case 'username':
+        setDetails((prev) => ({
+          ...prev,
+          username: event.target.value,
+        }));
+        break;
+    }
+  }
+
+  const [details, setDetails] = useState<detailsType>({
+    username: '',
+    password: '',
+    email: '',
+  });
 
   return (
     <div className="Container">
@@ -37,7 +69,11 @@ export default function Form({ type }: { type: 'Login' | 'Signup' }) {
               type="email"
               name="email"
               id="email"
-              className=" p-2 text-center"
+              className=" p-2 "
+              value={details.email}
+              onChange={(e) => {
+                handleInput(e, 'email');
+              }}
             />
           ) : (
             ''
@@ -45,7 +81,17 @@ export default function Form({ type }: { type: 'Login' | 'Signup' }) {
           <label htmlFor="username" className="pt-3 text-red-600">
             Username
           </label>
-          <input type="text" name="username" id="username" className=" p-2" />
+          <input
+            type="text"
+            name="username"
+            id="username"
+            key={'username'}
+            className="p-2"
+            value={details.username}
+            onChange={(e) => {
+              handleInput(e, 'username');
+            }}
+          />
           <label htmlFor="password" className="pt-3 text-red-600">
             Password
           </label>
@@ -54,6 +100,10 @@ export default function Form({ type }: { type: 'Login' | 'Signup' }) {
             name="password"
             id="password"
             className=" p-2"
+            value={details.password}
+            onChange={(e) => {
+              handleInput(e, 'password');
+            }}
           />
           {type === 'Login' ? (
             <p className=" mt-5">
@@ -87,6 +137,9 @@ export default function Form({ type }: { type: 'Login' | 'Signup' }) {
           ) : (
             ''
           )}
+          <button type="button" className="create-cv-button">
+            Submit
+          </button>
         </form>
       </div>
     </div>

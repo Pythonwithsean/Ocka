@@ -28,6 +28,29 @@
 	flex-wrap: wrap;
 	flex-direction: row-reverse;		
 }
+.create-cv-button {
+  height: 100%;
+  width: 100%;
+	max-height: 40px;
+	margin: 15px auto 0 auto;
+  max-width:300px;
+  color: #000;
+  border-radius: 30px;
+  cursor: pointer;
+  box-shadow: 3px 1px 5px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease;
+}
+
+
+.create-cv-button{
+  background-color: red;
+  color:white;
+}
+
+.create-cv-button:hover{
+  background-color: #000;
+}
+
 
 .blob-form {
 	width: 100%;
