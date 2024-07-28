@@ -16,6 +16,7 @@ export default function VideoEmbed() {
       <video
         className="Frame"
         src="/videos/demo1.mp4"
+        controls={false}
         autoPlay={true}
         loop={true}
         ref={videoRef as any}
