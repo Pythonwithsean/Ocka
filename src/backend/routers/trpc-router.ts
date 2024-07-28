@@ -10,4 +10,5 @@ const appRouter = router({
 	health: procedure.query(healthResolver)
 })
 
+export default appRouter
 export type appRouter = typeof appRouter
