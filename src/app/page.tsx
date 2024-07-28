@@ -1,5 +1,6 @@
 import Header from './components/Header';
 import './styles/Home.css';
+import VideoEmbed from './components/VideoEmbed';
 export default async function Home() {
   return (
     <main>
@@ -52,16 +53,7 @@ export default async function Home() {
           top: '10%',
         }}
       >
-        <img
-          src="/images/blob3.svg"
-          alt="CV"
-          style={{
-            width: '100%',
-            maxWidth: '500px',
-            maxHeight: '600px',
-            height: '100%',
-          }}
-        />
+        <VideoEmbed />
       </section>
       <section
         className="Hero"
