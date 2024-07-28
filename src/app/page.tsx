@@ -78,7 +78,7 @@ export default async function Home() {
           <VideoEmbed />
         </section>
       </section>
-      <section></section>
+      <section className=""></section>
     </main>
   );
 }

@@ -1,12 +1,17 @@
 .Form {
-	width: 100%;
-	max-width: 400px;
-	border-radius: 17px;
+	width: 50%;
 	display: flex;
 	flex-direction: column;
 	padding: 15px;
-	box-shadow: 2px 5px 10px rgb(213, 0, 0);
 }
+
+.box2{
+	width: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
 
 .Container{
 	width: 100%;
@@ -14,4 +19,29 @@
 	align-items: center;
 	display: flex;
 	flex-direction: column;
+}
+
+.box{
+	width: 100%;
+	height: 100vh;
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row-reverse;		
+}
+
+.blob-form {
+	width: 100%;
+	height: 100%;
+	max-width: 500px;
+}
+
+
+@media screen and (max-width: 920px){
+	.box{
+		flex-direction: column;
+		align-items: center;
+	}
+	.box2{
+		display: none;
+	}
 }
