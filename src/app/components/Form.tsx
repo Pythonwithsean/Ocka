@@ -10,6 +10,12 @@ export default function Form({ type }: { type: 'Login' | 'Signup' }) {
     password: string;
   };
 
+  function handleSubmit(event: React.MouseEvent, type: 'Login' | 'Signup') {
+    event.preventDefault();
+    console.log(details);
+    console.log(type);
+  }
+
   type inputType = 'username' | 'password' | 'email';
 
   function handleInput(
@@ -137,7 +143,13 @@ export default function Form({ type }: { type: 'Login' | 'Signup' }) {
           ) : (
             ''
           )}
-          <button type="button" className="create-cv-button">
+          <button
+            type="submit"
+            className="create-cv-button"
+            onClick={(e) => {
+              handleSubmit(e, type);
+            }}
+          >
             Submit
           </button>
         </form>
