@@ -2,18 +2,35 @@
 	width: 100%;
 	max-width: 650px;
 	position: relative;
-	margin-top: 3.6%;
-	left: 6%;
 	flex-wrap:wrap;
 	display: flex;
+	margin-bottom: 2%;
 	padding: 0.5rem;
+}
+
+.Hero-container{
+	width: 82%;
+	margin:  1% auto;
+	flex-wrap: wrap;
+	padding: 5px;
+	justify-content: space-between;
+	display: flex;
+	align-items: center;
 }
 
 .Frame {
 	width: 100%;
-	border: 2px solid red;
+	max-width: 340px;
+	box-shadow: -5px 10px 10px red ;
 	height: 100%;
 }
+
+
+@media only screen and (max-width) {
+	
+} 
+	
+
 
 
 
