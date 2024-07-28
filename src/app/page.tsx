@@ -6,7 +6,7 @@ export default async function Home() {
     <main>
       <Header />
       <img src="/images/blob.svg" alt="Blob" className="blob" />
-      <main className="Hero-container">
+      <section className="Hero-container">
         <section
           className="Hero"
           style={{
@@ -77,7 +77,8 @@ export default async function Home() {
         <section className="video-container">
           <VideoEmbed />
         </section>
-      </main>
+      </section>
+      <section></section>
     </main>
   );
 }

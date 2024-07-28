@@ -1,12 +1,8 @@
 'use client';
 import '../styles/Form.css';
-import { useState } from 'react';
 import Navbar from './Navbar';
 
 export default function Form({ type }: { type: 'Login' | 'Signup' }) {
-  const [username, setUsername] = useState<string | undefined>('');
-  const [password, setPassword] = useState<string | undefined>();
-
   return (
     <div className="Container">
       <Navbar />
