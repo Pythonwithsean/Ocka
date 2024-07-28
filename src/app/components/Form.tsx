@@ -59,8 +59,10 @@ export default function Form({ type }: { type: 'Login' | 'Signup' }) {
           <img src="/images/blob.svg" className="blob-form" alt="blob" />
         </div>
         <form action="" className="Form">
-          <h1 className=" font-bold text-center text-2xl text-red-500">
-            {type}
+          <h1 className=" font-bold text-center text-3xl text-red-600 border-b-red-600 border-b pb-4 ">
+            {type === 'Login'
+              ? 'Login into your Account'
+              : 'Create a new Account'}
           </h1>
 
           {type === 'Signup' ? (
@@ -143,6 +145,8 @@ export default function Form({ type }: { type: 'Login' | 'Signup' }) {
           ) : (
             ''
           )}
+          <br />
+
           <button
             type="submit"
             className="create-cv-button"
