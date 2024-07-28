@@ -10,7 +10,7 @@ export default async function Home() {
         <section
           className="Hero"
           style={{
-            borderBottom: '5px solid red',
+            borderBottom: '7px solid red',
           }}
         >
           <h1

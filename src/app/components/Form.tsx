@@ -3,6 +3,16 @@ import '../styles/Form.css';
 import Navbar from './Navbar';
 
 export default function Form({ type }: { type: 'Login' | 'Signup' }) {
+  type loginformtype = {
+    username: string;
+    password: string;
+  };
+  type signupformtype = {
+    email: string;
+    username: string;
+    password: string;
+  };
+
   return (
     <div className="Container">
       <Navbar />
