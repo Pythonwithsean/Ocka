@@ -1,6 +1,5 @@
 import Header from './components/Header';
 import './styles/Home.css';
-import { connectToDatabase } from '../backend/_db/_db';
 export default async function Home() {
   return (
     <main>

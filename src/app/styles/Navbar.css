@@ -21,7 +21,7 @@
 }
 
 
-.button {
+.button, .create-resume-button {
   height: 100%;
   width: 100%;
   max-width:300px;
@@ -32,13 +32,22 @@
   border-radius: 30px;
   cursor: pointer;
   box-shadow: 3px 1px 5px rgba(0, 0, 0, 0.2);
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
 }
 
 
 .button:hover {
   background-color: #000;
   color: #fff;
+}
+
+.create-resume-button{
+  background-color: red;
+  color:white;
+}
+
+.create-resume-button:hover{
+  background-color: #000;
 }
 
 

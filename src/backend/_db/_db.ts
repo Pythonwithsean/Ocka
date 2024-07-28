@@ -28,5 +28,4 @@ export const connectToDatabase = async (): Promise<Connection> => {
 	})
 };
 
-connectToDatabase()
 

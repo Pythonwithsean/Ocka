@@ -12,14 +12,7 @@ export default function Navbar() {
           </button>
         </a>
         <a href="/create-resume">
-          <button
-            type="button"
-            className="button"
-            style={{
-              backgroundColor: 'red',
-              color: 'white',
-            }}
-          >
+          <button type="button" className="create-resume-button" style={{}}>
             Create a Resume
           </button>
         </a>
