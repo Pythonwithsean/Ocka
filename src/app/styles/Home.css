@@ -12,9 +12,10 @@
 	width: 82%;
 	margin:  1% auto;
 	flex-wrap: wrap;
-	column-gap:10%;
+	column-gap:11%;
 	display: flex;
-	align-items: center;
+	justify-content: center;
+	align-items: center;	
 }
 
 .Frame {

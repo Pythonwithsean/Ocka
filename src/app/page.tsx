@@ -16,8 +16,8 @@ export default async function Home() {
           <h1
             className=" align-middle font-bold font-mono"
             style={{
-              fontSize: '3.5rem',
-              lineHeight: '1.3',
+              fontSize: '3.2rem',
+              lineHeight: '1.26',
               lineClamp: 2,
               textAlign: 'center',
               fontWeight: 800,

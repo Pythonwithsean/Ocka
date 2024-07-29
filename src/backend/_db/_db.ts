@@ -1,9 +1,9 @@
-import mysql, { Connection } from "mysql2"
+import mysql from "mysql2"
 
 
 const config = {
 	host: 'localhost',
-	port: process.env.MYSQL_PORT || 3306,
+	// port: process.env.MYSQL_PORT || 3306,
 	user: process.env.MYSQL_USER,
 	password: process.env.MYSQL_PASSWORD,
 	database: process.env.MYSQL_DATABASE
@@ -17,19 +17,22 @@ const config = {
 }
 
 
-export const connectToDatabase = async (): Promise<Connection> => {
+export const connectToDatabase = async (): Promise<mysql.Connection> => {
 	return new Promise(async (res, rej) => {
 		try {
 			const connection = await mysql.createConnection(config);
-			res(connection)
+			console.log("Connection to Database was made")
+			console.log(connection)
+			return connection
 		} catch (error: any) {
-			rej(error.message)
+			console.error(error.message)
 		}
 	})
 }
 
 async function initDB() {
 	const db = await connectToDatabase()
+	console.log(typeof db)
 	return db
 }
 

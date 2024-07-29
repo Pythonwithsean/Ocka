@@ -1,4 +1,4 @@
-import { Connection } from "mysql2"
+import mysql from "mysql2"
 import hashPassword from "../helpers/hashing"
 import { v4 as uuid } from "uuid"
 export function helloResolver() {
@@ -19,7 +19,7 @@ export function loginResolver(opts: any) {
 
 export async function signupResolver({ ctx, input }: {
 	ctx: {
-		db: Connection
+		db: mysql.Pool
 	}, input: {
 		email: string,
 		username: string,
@@ -33,6 +33,7 @@ export async function signupResolver({ ctx, input }: {
 		const userId = uuid()
 		const query = `INSERT INTO Users (id, email, username, password, role) VALUES (?, ?, ?, ?, ?)`
 		await db.execute(query, [userId, email, username, hashedPassword, "nMember"])
+		console.log("User Created Sucessfully")
 		return {
 			success: true,
 			message: "User Created Sucessfully"
