@@ -26,6 +26,11 @@ export const connectToDatabase = async (): Promise<Connection> => {
 			rej(error.message)
 		}
 	})
-};
+}
 
+async function initDB() {
+	const db = await connectToDatabase()
+	return db
+}
 
+export const db = initDB()

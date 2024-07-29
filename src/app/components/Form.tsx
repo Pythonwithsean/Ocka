@@ -2,6 +2,7 @@
 import { ChangeEvent, useState } from 'react';
 import '../styles/Form.css';
 import Navbar from './Navbar';
+import trpc from '../utils/trpc-client';
 
 export default function Form({ type }: { type: 'Login' | 'Signup' }) {
   type detailsType = {
@@ -10,9 +11,27 @@ export default function Form({ type }: { type: 'Login' | 'Signup' }) {
     password: string;
   };
 
-  function handleSubmit(event: React.MouseEvent, type: 'Login' | 'Signup') {
+  async function handleSubmit(
+    event: React.MouseEvent,
+    type: 'Login' | 'Signup'
+  ) {
     event.preventDefault();
-    console.log(details);
+    const { username, password, email } = details;
+    switch (type) {
+      case 'Login':
+        //login
+        break;
+
+      default:
+        const response = await trpc.signup.mutate({
+          username,
+          password,
+          email,
+        });
+        console.log(response);
+        break;
+    }
+
     console.log(type);
   }
 

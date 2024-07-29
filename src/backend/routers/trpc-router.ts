@@ -1,13 +1,13 @@
 import { connectToDatabase } from "../_db/_db"
 import { procedure, router } from "../helpers/tRPC"
-import { healthResolver, helloResolver } from "../trpc-resolvers/trpc-resolvers"
-
-
-connectToDatabase()
+import { healthResolver, helloResolver, loginResolver, signupResolver } from "../trpc-resolvers/trpc-resolvers"
+import { signupType, loginType } from "@/types/trpc-types"
 
 const appRouter = router({
 	hello: procedure.query(helloResolver),
-	health: procedure.query(healthResolver)
+	health: procedure.query(healthResolver),
+	login: procedure.input(loginType).mutation(loginResolver),
+	signup: procedure.input(signupType).mutation(signupResolver)
 })
 
 export default appRouter
