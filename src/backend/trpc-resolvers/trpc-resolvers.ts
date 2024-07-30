@@ -1,6 +1,7 @@
 import mysql from 'mysql2';
 import hashPassword from '../helpers/hashing';
 import { v4 as uuid } from 'uuid';
+import { createUser } from '../helpers/DatabaseFunctions';
 export function helloResolver() {
   return 'Hello server Trpc endpoint';
 }
@@ -11,7 +12,7 @@ export function healthResolver() {
   };
 }
 
-export function loginResolver(opts: any) { }
+// export function loginResolver(opts: any) { }
 
 export async function signupResolver({
   ctx,
@@ -28,26 +29,19 @@ export async function signupResolver({
 }): Promise<{ success: boolean, message: string }> {
   const { connectToDatabase } = ctx;
   const connection = await connectToDatabase()
-  try {
-    const { username, password, email } = input;
-    const hashedPassword = await hashPassword(password);
-    const userId = uuid();
-    const query = `INSERT INTO Users (id, email, username, password, role) VALUES (?, ?, ?, ?, ?)`;
-    // create seperate function to create user to handle error and see if valid
-    await connection.execute(query, [userId, email, username, hashedPassword, 'nMember'])
-
-  } catch (err: any) {
-    console.error(err.message)
+  const { username, password, email } = input;
+  const hashedPassword = await hashPassword(password);
+  const userId = uuid();
+  const response = await createUser(userId, email, username, hashedPassword, connection)
+  if (response === true) {
     return {
-      success: false,
-      message: "Fail"
+      success: true,
+      message: "Success"
     }
   }
-  finally {
-    connection.end()
-  }
+  console.error("Error Creating User")
   return {
-    success: true,
-    message: "Success"
+    success: false,
+    message: "Error Creating User"
   }
 }

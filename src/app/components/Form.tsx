@@ -1,6 +1,7 @@
+/* eslint-disable no-case-declarations */
 'use client';
 
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, useEffect, useState } from 'react';
 
 import Alert from '@mui/material/Alert';
 
@@ -11,20 +12,18 @@ import trpc from '../utils/trpc-client';
 import Logo from './Logo';
 
 export default function Form({ type }: { type: 'Login' | 'Signup' }) {
-  type detailsType = {
+  interface detailsType {
     email: string;
-
     username: string;
-
     password: string;
-  };
+  }
 
   const [success, setSuccess] = useState<boolean>(false);
   const [message, setMessage] = useState<'success' | 'error'>('success');
+  const [alertMessage, setalertMessage] = useState<string>();
 
   async function handleSubmit(
     event: React.MouseEvent,
-
     type: 'Login' | 'Signup'
   ) {
     event.preventDefault();
@@ -39,26 +38,34 @@ export default function Form({ type }: { type: 'Login' | 'Signup' }) {
       default:
         const response = await trpc.signup.mutate({
           username,
-
           password,
-
           email,
         });
-
-        console.log(response);
         const { success, message } = response;
         if (!success) {
           setMessage('error');
+          setalertMessage(message);
           setSuccess(true);
         } else {
-          setSuccess(true);
+          setalertMessage(message);
           setMessage('success');
+          setSuccess(true);
         }
         break;
     }
-
     console.log(type);
   }
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (success) {
+        setSuccess(false);
+      }
+    }, 1000);
+    return () => {
+      timer;
+    };
+  }, [success]);
 
   type inputType = 'username' | 'password' | 'email';
 
@@ -115,11 +122,13 @@ export default function Form({ type }: { type: 'Login' | 'Signup' }) {
           severity={message}
           style={{
             position: 'fixed',
-            top: '0',
+            bottom: 0,
+            padding: '5px',
             width: '100%',
+            height: '60px',
           }}
         >
-          This is a filled success Alert.
+          {alertMessage}
         </Alert>
       ) : (
         ''
@@ -127,7 +136,6 @@ export default function Form({ type }: { type: 'Login' | 'Signup' }) {
       <div className="Container">
         <div className="box">
           <div className="box2"></div>
-
           <form action="" className="Form">
             <h1 className=" font-bold text-center text-3xl text-red-600 border-b-red-600 border-b pb-4 ">
               {type === 'Login'
