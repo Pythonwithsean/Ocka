@@ -30,6 +30,16 @@ export default function Form({ type }: { type: 'Login' | 'Signup' }) {
 
     const { username, password, email } = details;
 
+    if (
+      type === 'Signup' &&
+      (username === '' || password === '' || email === '')
+    ) {
+      setMessage('error');
+      setalertMessage('Please Fill in all the Details');
+      setSuccess(true);
+      return;
+    }
+
     switch (type) {
       case 'Login':
         //login
@@ -61,7 +71,7 @@ export default function Form({ type }: { type: 'Login' | 'Signup' }) {
       if (success) {
         setSuccess(false);
       }
-    }, 1000);
+    }, 1300);
     return () => {
       timer;
     };
@@ -126,6 +136,8 @@ export default function Form({ type }: { type: 'Login' | 'Signup' }) {
             padding: '5px',
             width: '100%',
             height: '60px',
+            fontWeight: '800',
+            fontSize: '1.2em',
           }}
         >
           {alertMessage}
