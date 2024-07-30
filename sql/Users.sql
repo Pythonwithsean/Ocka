@@ -13,3 +13,8 @@ INSERT INTO
 	Users (id, email, username, password, role)
 VALUES
 	(?, ?, ?, ?, ?)
+	--login query
+	--Delete User Sean
+DELETE from Users
+where
+	username = 'Sean';

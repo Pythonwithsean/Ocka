@@ -1,44 +1,43 @@
 .Form {
-	margin-top: 9%;
-	width: 46%;
-	display: flex;
-	flex-direction: column;
-	padding: 30px;
+  margin-top: 9%;
+  width: 46%;
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
 }
 
-.box2{
-	width: 54%;
-	display: flex;
-	height: 100%;
-	background: linear-gradient(to right, red, purple);
+.box2 {
+  width: 54%;
+  display: flex;
+  height: 100%;
+  background: linear-gradient(to right, red, purple);
 }
 
-
-.Container{
-	position: absolute;
-	z-index: -9;
-	top: 0;
-	width: 100%;
-	height: 100vh;
-	align-items: center;
-	display: flex;
-	flex-direction: column;
+.Container {
+  position: absolute;
+  z-index: -9;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
 }
 
-.box{
-	width: 100%;
-	height: 100vh;
-	display: flex;
-	flex-wrap: wrap;
-	flex-direction: row-reverse;		
+.box {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row-reverse;
 }
 .create-cv-button {
   height: 100%;
   width: 100%;
-	max-height: 40px;
-	margin: 15px auto 0 auto;
-	padding: 5px 0 5px 0;
-  max-width:300px;
+  max-height: 40px;
+  margin: 15px auto 0 auto;
+  padding: 5px 0 5px 0;
+  max-width: 300px;
   color: #000;
   border-radius: 30px;
   cursor: pointer;
@@ -46,30 +45,27 @@
   transition: all 0.2s ease;
 }
 
-
-.create-cv-button{
+.create-cv-button {
   background-color: red;
-  color:white;
+  color: white;
 }
 
-.create-cv-button:hover{
+.create-cv-button:hover {
   background-color: #000;
 }
 
-
 .blob-form {
-	width: 100%;
-	height: 100%;
-	max-width: 500px;
+  width: 100%;
+  height: 100%;
+  max-width: 500px;
 }
 
-
-@media screen and (max-width: 920px){
-	.box{
-		flex-direction: column;
-		align-items: center;
-	}
-	.box2{
-		display: none;
-	}
+@media screen and (max-width: 920px) {
+  .box {
+    flex-direction: column;
+    align-items: center;
+  }
+  .box2 {
+    display: none;
+  }
 }

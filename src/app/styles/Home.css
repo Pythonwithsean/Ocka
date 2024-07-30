@@ -1,40 +1,30 @@
 .Hero {
-	width: 100%;
-	max-width: 650px;
-	position: relative;
-	flex-wrap:wrap;
-	display: flex;
-	margin-bottom: 2%;
-	padding: 0.5rem;
+  width: 100%;
+  max-width: 650px;
+  position: relative;
+  flex-wrap: wrap;
+  display: flex;
+  margin-bottom: 2%;
+  padding: 0.5rem;
 }
 
-.Hero-container{
-	width: 82%;
-	margin:  1% auto;
-	flex-wrap: wrap;
-	column-gap:11%;
-	display: flex;
-	justify-content: center;
-	align-items: center;	
+.Hero-container {
+  width: 82%;
+  margin: 1% auto;
+  flex-wrap: wrap;
+  column-gap: 11%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .Frame {
-	width: 100%;
-	max-width: 360px;
-	box-shadow: -5px 10px 10px red ;
-	height: 100%;
-	transform: rotate(2deg);
+  width: 100%;
+  max-width: 360px;
+  box-shadow: -5px 10px 10px red;
+  height: 100%;
+  transform: rotate(2deg);
 }
 
-
 @media only screen and (max-width) {
-	
-} 
-	
-
-
-
-
-	
-
-	
+}

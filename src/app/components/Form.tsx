@@ -1,35 +1,48 @@
 'use client';
+
 import { ChangeEvent, useState } from 'react';
+
 import '../styles/Form.css';
-import Navbar from './Navbar';
+
 import trpc from '../utils/trpc-client';
+
 import Logo from './Logo';
 
 export default function Form({ type }: { type: 'Login' | 'Signup' }) {
   type detailsType = {
     email: string;
+
     username: string;
+
     password: string;
   };
 
   async function handleSubmit(
     event: React.MouseEvent,
+
     type: 'Login' | 'Signup'
   ) {
     event.preventDefault();
+
     const { username, password, email } = details;
+
     switch (type) {
       case 'Login':
         //login
+
         break;
 
       default:
         const response = await trpc.signup.mutate({
           username,
+
           password,
+
           email,
         });
+
         console.log(response);
+
         break;
     }
 
@@ -40,43 +53,55 @@ export default function Form({ type }: { type: 'Login' | 'Signup' }) {
 
   function handleInput(
     event: ChangeEvent<HTMLInputElement>,
+
     inputType: inputType
   ) {
     switch (inputType) {
       case 'email':
         setDetails((prev) => ({
           ...prev,
+
           email: event.target.value,
         }));
 
         break;
+
       case 'password':
         setDetails((prev) => ({
           ...prev,
+
           password: event.target.value,
         }));
+
         break;
+
       case 'username':
         setDetails((prev) => ({
           ...prev,
+
           username: event.target.value,
         }));
+
         break;
     }
   }
 
   const [details, setDetails] = useState<detailsType>({
     username: '',
+
     password: '',
+
     email: '',
   });
 
   return (
     <>
       <Logo />
+
       <div className="Container">
         <div className="box">
           <div className="box2"></div>
+
           <form action="" className="Form">
             <h1 className=" font-bold text-center text-3xl text-red-600 border-b-red-600 border-b pb-4 ">
               {type === 'Login'
@@ -91,6 +116,7 @@ export default function Form({ type }: { type: 'Login' | 'Signup' }) {
             ) : (
               ''
             )}
+
             {type === 'Signup' ? (
               <input
                 type="email"
@@ -106,9 +132,11 @@ export default function Form({ type }: { type: 'Login' | 'Signup' }) {
             ) : (
               ''
             )}
+
             <label htmlFor="username" className="pt-3 text-red-600">
               Username
             </label>
+
             <input
               type="text"
               name="username"
@@ -121,9 +149,11 @@ export default function Form({ type }: { type: 'Login' | 'Signup' }) {
               }}
               placeholder="Ocka"
             />
+
             <label htmlFor="password" className="pt-3 text-red-600">
               Password
             </label>
+
             <input
               type="password"
               name="password"
@@ -135,6 +165,7 @@ export default function Form({ type }: { type: 'Login' | 'Signup' }) {
               }}
               placeholder="Ocka is the best"
             />
+
             {type === 'Login' ? (
               <p className=" mt-5">
                 Don't have an Account?{' '}
@@ -145,6 +176,7 @@ export default function Form({ type }: { type: 'Login' | 'Signup' }) {
             ) : (
               ''
             )}
+
             {type === 'Signup' ? (
               <p className=" mt-5">
                 Already have an account ?{' '}
@@ -155,6 +187,7 @@ export default function Form({ type }: { type: 'Login' | 'Signup' }) {
             ) : (
               ''
             )}
+
             {type === 'Login' ? (
               <p className=" mt-5">
                 <a
@@ -167,6 +200,7 @@ export default function Form({ type }: { type: 'Login' | 'Signup' }) {
             ) : (
               ''
             )}
+
             <br />
 
             <button

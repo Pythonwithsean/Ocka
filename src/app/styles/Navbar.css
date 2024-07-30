@@ -1,15 +1,15 @@
-.navbar{
+.navbar {
   width: 100%;
   max-width: 94%;
   display: flex;
   margin: 1rem auto;
   align-items: center;
-  justify-content:space-between;
+  justify-content: space-between;
   gap: 1rem;
   flex-wrap: wrap;
 }
 
-.logo:hover{
+.logo:hover {
   transform: rotate(360deg);
   transition: all 0.9s ease-in-out;
 }
@@ -17,14 +17,13 @@
 .navbar span {
   display: flex;
   gap: 1rem;
-
 }
 
-
-.button, .create-resume-button {
+.button,
+.create-resume-button {
   height: 100%;
   width: 100%;
-  max-width:300px;
+  max-width: 300px;
   min-width: 150px;
   max-height: 70px;
   color: #000;
@@ -35,22 +34,19 @@
   transition: all 0.2s ease;
 }
 
-
 .button:hover {
   background-color: #000;
   color: #fff;
 }
 
-.create-resume-button{
+.create-resume-button {
   background-color: red;
-  color:white;
+  color: white;
 }
 
-.create-resume-button:hover{
+.create-resume-button:hover {
   background-color: #000;
 }
-
-
 
 .navbar a > img {
   width: 100%;
@@ -60,17 +56,16 @@
   border-radius: 100%;
 }
 
-
 @media only screen and (max-width: 768px) {
-		.navbar {
-		flex-direction: column;
-		gap: 1rem;
-	}
-	.navbar span {
-		flex-direction: column;
-		gap: 1rem;
-	}
-	.button {
-		width: 100%;
-	}	
+  .navbar {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .navbar span {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .button {
+    width: 100%;
+  }
 }

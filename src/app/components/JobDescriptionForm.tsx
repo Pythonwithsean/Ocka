@@ -1,10 +1,17 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFileAlt, faClipboardList, faCogs, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import {
+  faFileAlt,
+  faClipboardList,
+  faCogs,
+  faArrowLeft,
+} from '@fortawesome/free-solid-svg-icons';
 
 interface JobDescriptionFormProps {
   jobDescription: string;
-  handleJobDescriptionChange: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
+  handleJobDescriptionChange: (
+    event: React.ChangeEvent<HTMLTextAreaElement>
+  ) => void;
   handleNextStep: () => void;
   handleBackStep: () => void;
 }
@@ -18,13 +25,21 @@ const JobDescriptionForm: React.FC<JobDescriptionFormProps> = ({
   return (
     <div>
       <h3 style={{ color: '#333' }}>
-        <FontAwesomeIcon icon={faClipboardList} style={{ marginRight: '10px' }} />
+        <FontAwesomeIcon
+          icon={faClipboardList}
+          style={{ marginRight: '10px' }}
+        />
         Job Description
       </h3>
       <div style={{ marginBottom: '20px' }}>
         <label
           htmlFor="job-description"
-          style={{ display: 'block', marginBottom: '8px', color: '#333', fontSize: '16px' }}
+          style={{
+            display: 'block',
+            marginBottom: '8px',
+            color: '#333',
+            fontSize: '16px',
+          }}
         >
           <FontAwesomeIcon icon={faFileAlt} style={{ marginRight: '5px' }} />
           Enter URL, job description, etc.

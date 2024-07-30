@@ -22,23 +22,35 @@ const TemplateSelection: React.FC<TemplateSelectionProps> = ({
 }) => {
   return (
     <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '20px' }}>
-      <h3 style={{ color: '#333' }}>
-        Select a CV Template
-      </h3>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '40px', marginBottom: '40px' }}>
+      <h3 style={{ color: '#333' }}>Select a CV Template</h3>
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(2, 1fr)',
+          gap: '40px',
+          marginBottom: '40px',
+        }}
+      >
         {templates.map((template) => (
           <div
             key={template.id}
             onClick={() => handleTemplateSelect(template.id)}
             style={{
-              border: selectedTemplate === template.id ? '4px solid #e60023' : '4px solid #ccc',
+              border:
+                selectedTemplate === template.id
+                  ? '4px solid #e60023'
+                  : '4px solid #ccc',
               cursor: 'pointer',
               borderRadius: '8px',
               overflow: 'hidden',
               maxWidth: '100%',
             }}
           >
-            <img src={template.src} alt={`Template ${template.id}`} style={{ width: '100%', height: 'auto', display: 'block' }} />
+            <img
+              src={template.src}
+              alt={`Template ${template.id}`}
+              style={{ width: '100%', height: 'auto', display: 'block' }}
+            />
           </div>
         ))}
       </div>

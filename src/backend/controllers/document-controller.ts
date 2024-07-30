@@ -1,7 +1,10 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { generateWordDoc } from '../services/document-generation-service';
 
-export const handleDocumentRequest = async (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
+export const handleDocumentRequest = async (
+  req: NextApiRequest,
+  res: NextApiResponse
+): Promise<void> => {
   if (req.method === 'POST') {
     const { personalInfo, jobDescription, generatedText } = req.body as {
       personalInfo: PersonalInfo;
@@ -10,9 +13,16 @@ export const handleDocumentRequest = async (req: NextApiRequest, res: NextApiRes
     };
 
     try {
-      const buffer = await generateWordDoc(personalInfo, jobDescription, generatedText);
+      const buffer = await generateWordDoc(
+        personalInfo,
+        jobDescription,
+        generatedText
+      );
       res.setHeader('Content-Disposition', 'attachment; filename=cv.docx');
-      res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document');
+      res.setHeader(
+        'Content-Type',
+        'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+      );
       res.send(buffer);
     } catch (error: any) {
       console.error('Error generating document:', error);

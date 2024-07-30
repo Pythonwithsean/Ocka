@@ -1,11 +1,9 @@
-import { procedure, router } from "../helpers/tRPC"
-
+import { procedure, router } from '../helpers/tRPC';
 
 const healthRouter = router({
-	health: procedure.query(async () => {
-		return "Server TRPC endpoint working"
-	}
-	)
-})
+  health: procedure.query(async () => {
+    return 'Server TRPC endpoint working';
+  }),
+});
 
-export default healthRouter
+export default healthRouter;

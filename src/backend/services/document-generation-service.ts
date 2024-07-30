@@ -1,6 +1,10 @@
 import { Document, Packer, Paragraph, TextRun, HeadingLevel } from 'docx';
 
-export const generateWordDoc = async (personalInfo: PersonalInfo, jobDescription: string, generatedText: string): Promise<Buffer> => {
+export const generateWordDoc = async (
+  personalInfo: PersonalInfo,
+  jobDescription: string,
+  generatedText: string
+): Promise<Buffer> => {
   const doc = new Document({
     sections: [
       {
@@ -8,7 +12,7 @@ export const generateWordDoc = async (personalInfo: PersonalInfo, jobDescription
         children: [
           // Personal Information Section
           new Paragraph({
-            text: "Personal Information",
+            text: 'Personal Information',
             heading: HeadingLevel.HEADING_1,
             spacing: { after: 200 },
           }),
@@ -43,14 +47,12 @@ export const generateWordDoc = async (personalInfo: PersonalInfo, jobDescription
 
           // Experience Section
           new Paragraph({
-            text: "Experience",
+            text: 'Experience',
             heading: HeadingLevel.HEADING_1,
             spacing: { after: 200 },
           }),
           new Paragraph({
-            children: [
-              new TextRun(personalInfo.experience),
-            ],
+            children: [new TextRun(personalInfo.experience)],
           }),
           new Paragraph({
             text: '',
@@ -59,14 +61,12 @@ export const generateWordDoc = async (personalInfo: PersonalInfo, jobDescription
 
           // Education Section
           new Paragraph({
-            text: "Education",
+            text: 'Education',
             heading: HeadingLevel.HEADING_1,
             spacing: { after: 200 },
           }),
           new Paragraph({
-            children: [
-              new TextRun(personalInfo.education),
-            ],
+            children: [new TextRun(personalInfo.education)],
           }),
           new Paragraph({
             text: '',
@@ -75,14 +75,12 @@ export const generateWordDoc = async (personalInfo: PersonalInfo, jobDescription
 
           // Job Description Section
           new Paragraph({
-            text: "Job Description",
+            text: 'Job Description',
             heading: HeadingLevel.HEADING_1,
             spacing: { after: 200 },
           }),
           new Paragraph({
-            children: [
-              new TextRun(jobDescription),
-            ],
+            children: [new TextRun(jobDescription)],
           }),
           new Paragraph({
             text: '',
@@ -91,14 +89,12 @@ export const generateWordDoc = async (personalInfo: PersonalInfo, jobDescription
 
           // Generated CV Section
           new Paragraph({
-            text: "Generated CV",
+            text: 'Generated CV',
             heading: HeadingLevel.HEADING_1,
             spacing: { after: 200 },
           }),
           new Paragraph({
-            children: [
-              new TextRun(generatedText),
-            ],
+            children: [new TextRun(generatedText)],
           }),
         ],
       },
