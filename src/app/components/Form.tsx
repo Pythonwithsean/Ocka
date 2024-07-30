@@ -43,6 +43,7 @@ export default function Form({ type }: { type: 'Login' | 'Signup' }) {
     switch (type) {
       case 'Login':
         //login
+        trpc.login.mutate({ username, password });
         break;
 
       default:

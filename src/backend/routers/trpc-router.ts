@@ -1,4 +1,3 @@
-import { connectToDatabase } from '../_db/_db';
 import { procedure, router } from '../helpers/tRPC';
 import {
   healthResolver,

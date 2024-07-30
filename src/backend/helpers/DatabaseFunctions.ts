@@ -1,4 +1,39 @@
 import mysql from "mysql2"
+import { compareHash } from "./hashing"
+
+
+
+
+
+export async function loginUser(username: string, password: string, connection: mysql.Connection): Promise<{
+	user: string,
+	id: string
+}> {
+	return new Promise((res) => {
+		const query = `SELECT id, username, password FROM Users where username = ?`
+		connection.execute(query, [username], (err, result) => {
+			if ((result as []).length >= 1) {
+				const foo = result[0] as { username: string, password: string, id: string };
+				compareHash(password, foo.password).then(valid => {
+					if (valid === true) {
+						res({
+							id: foo.id,
+							user: foo.username,
+						})
+						return
+					} else {
+						console.error("No User Found")
+						res({
+							id: "",
+							user: ""
+						})
+						return
+					}
+				})
+			}
+		})
+	})
+}
 
 export async function createUser(id: string, email: string, username: string, password: string, connection: mysql.Connection): Promise<boolean> {
 	return new Promise((res) => {
