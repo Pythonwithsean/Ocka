@@ -25,35 +25,29 @@ export async function signupResolver({
     username: string;
     password: string;
   };
-}) {
+}): Promise<{ success: boolean, message: string }> {
   const { connectToDatabase } = ctx;
-  const { username, password, email } = input;
+  const connection = await connectToDatabase()
   try {
+    const { username, password, email } = input;
     const hashedPassword = await hashPassword(password);
     const userId = uuid();
     const query = `INSERT INTO Users (id, email, username, password, role) VALUES (?, ?, ?, ?, ?)`;
-    (await connectToDatabase()).execute(query, [
-      userId,
-      email,
-      username,
-      hashedPassword,
-      'nMember',
-    ], (err, res) => {
-      if (err === null) {
-        console.log('User Created Sucessfully');
-        return
-      }
-      throw new Error(err.message)
-    });
-    return {
-      success: true,
-      message: 'User Created Sucessfully',
-    };
+    // create seperate function to create user to handle error and see if valid
+    await connection.execute(query, [userId, email, username, hashedPassword, 'nMember'])
+
   } catch (err: any) {
-    console.error(err.message);
+    console.error(err.message)
     return {
       success: false,
-      message: 'Failed to Create User.',
-    };
+      message: "Fail"
+    }
+  }
+  finally {
+    connection.end()
+  }
+  return {
+    success: true,
+    message: "Success"
   }
 }

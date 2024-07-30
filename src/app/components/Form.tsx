@@ -2,6 +2,8 @@
 
 import { ChangeEvent, useState } from 'react';
 
+import Alert from '@mui/material/Alert';
+
 import '../styles/Form.css';
 
 import trpc from '../utils/trpc-client';
@@ -17,6 +19,9 @@ export default function Form({ type }: { type: 'Login' | 'Signup' }) {
     password: string;
   };
 
+  const [success, setSuccess] = useState<boolean>(false);
+  const [message, setMessage] = useState<'success' | 'error'>('success');
+
   async function handleSubmit(
     event: React.MouseEvent,
 
@@ -29,7 +34,6 @@ export default function Form({ type }: { type: 'Login' | 'Signup' }) {
     switch (type) {
       case 'Login':
         //login
-
         break;
 
       default:
@@ -42,7 +46,14 @@ export default function Form({ type }: { type: 'Login' | 'Signup' }) {
         });
 
         console.log(response);
-
+        const { success, message } = response;
+        if (!success) {
+          setMessage('error');
+          setSuccess(true);
+        } else {
+          setSuccess(true);
+          setMessage('success');
+        }
         break;
     }
 
@@ -98,6 +109,21 @@ export default function Form({ type }: { type: 'Login' | 'Signup' }) {
     <>
       <Logo />
 
+      {success ? (
+        <Alert
+          variant="filled"
+          severity={message}
+          style={{
+            position: 'fixed',
+            top: '0',
+            width: '100%',
+          }}
+        >
+          This is a filled success Alert.
+        </Alert>
+      ) : (
+        ''
+      )}
       <div className="Container">
         <div className="box">
           <div className="box2"></div>
