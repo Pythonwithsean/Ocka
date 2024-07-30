@@ -12,7 +12,10 @@ export function healthResolver() {
   };
 }
 
-// export function loginResolver(opts: any) { }
+
+export function Auth(opts: any) { }
+
+export function loginResolver(opts: any) { }
 
 export async function signupResolver({
   ctx,
