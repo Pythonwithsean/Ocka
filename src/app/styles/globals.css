@@ -20,6 +20,22 @@ body {
   height: 100%;
 }
 
+.logo:hover{
+  transform: rotate(360deg);
+  transition: all 0.9s ease-in-out;
+}
+.navbar{
+  width: 100%;
+  max-width: 94%;
+  display: flex;
+  margin: 1rem auto;
+  align-items: center;
+  justify-content:space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+
 .blob{
   position: fixed;
   z-index: -4;
