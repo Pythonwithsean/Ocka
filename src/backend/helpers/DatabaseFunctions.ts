@@ -2,7 +2,6 @@ import mysql from "mysql2"
 import { compareHash } from "./hashing"
 
 
-
 export async function loginUser(username: string, password: string, connection: mysql.Connection): Promise<{
   user: string,
   id: string
