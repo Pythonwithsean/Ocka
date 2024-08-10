@@ -2,6 +2,7 @@ import mysql from 'mysql2';
 import hashPassword from '../helpers/hashing';
 import { v4 as uuid } from 'uuid';
 import { createUser, loginUser } from '../helpers/DatabaseFunctions';
+
 export function helloResolver() {
   return 'Hello server Trpc endpoint';
 }
@@ -12,8 +13,7 @@ export function healthResolver() {
   };
 }
 
-
-export function Auth(opts: any) { }
+export function Auth() { }
 
 export async function loginResolver({ ctx, input }: {
   ctx: {
@@ -29,13 +29,26 @@ export async function loginResolver({ ctx, input }: {
   try {
     const response = await loginUser(username, password, connection)
     const { user, id } = response
-    console.log(user, id)
-
-  } catch (err) {
-    console.error(err)
+    if (!user || !id) {
+      console.log("Invalid Query", user, id)
+      return {
+        success: false,
+        message: "No User Found"
+      }
+    }
+    connection.end()
+    return {
+      success: true,
+      message: "Success"
+    }
+  } catch (err: any) {
+    console.error(err.message)
+    connection.end()
+    return {
+      success: false,
+      message: "Error Logging In"
+    }
   }
-
-
 }
 
 export async function signupResolver({

@@ -27,40 +27,52 @@ export default function Form({ type }: { type: 'Login' | 'Signup' }) {
     type: 'Login' | 'Signup'
   ) {
     event.preventDefault();
-
     const { username, password, email } = details;
-
-    if (
-      type === 'Signup' &&
-      (username === '' || password === '' || email === '')
-    ) {
+    if (type === 'Signup' && !username && !password && !email) {
       setMessage('error');
-      setalertMessage('Please Fill in all the Details');
+      setalertMessage('Please Fill in all the Details to Signup');
+      setSuccess(true);
+      return;
+    } else if (type === 'Login' && !username && !password) {
+      console.log('Login');
+      setMessage('error');
+      setalertMessage('Please Fill in all the Details to Login');
       setSuccess(true);
       return;
     }
-
+    let response;
     switch (type) {
       case 'Login':
-        //login
-        trpc.login.mutate({ username, password });
+        response = await trpc.login.mutate({ username, password });
+        if (response) {
+          console.log(response);
+          if (response.success === false) {
+            setMessage('error');
+            setalertMessage(response.message);
+            setSuccess(true);
+          } else {
+            setalertMessage(response.message);
+            setMessage('success');
+            setSuccess(true);
+          }
+        }
         break;
-
       default:
-        const response = await trpc.signup.mutate({
+        response = await trpc.signup.mutate({
           username,
           password,
           email,
         });
-        const { success, message } = response;
-        if (!success) {
-          setMessage('error');
-          setalertMessage(message);
-          setSuccess(true);
-        } else {
-          setalertMessage(message);
-          setMessage('success');
-          setSuccess(true);
+        if (response) {
+          if (response.success === false) {
+            setMessage('error');
+            setalertMessage(response.message);
+            setSuccess(true);
+          } else {
+            setalertMessage(response.message);
+            setMessage('success');
+            setSuccess(true);
+          }
         }
         break;
     }
@@ -149,7 +161,7 @@ export default function Form({ type }: { type: 'Login' | 'Signup' }) {
       <div className="Container">
         <div className="box">
           <div className="box2"></div>
-          <form action="" className="Form">
+          <form action={''} method="POST" className="Form">
             <h1 className=" font-bold text-center text-3xl text-red-600 border-b-red-600 border-b pb-4 ">
               {type === 'Login'
                 ? 'Login into your Account'
@@ -168,6 +180,7 @@ export default function Form({ type }: { type: 'Login' | 'Signup' }) {
               <input
                 type="email"
                 name="email"
+                required
                 id="email"
                 className=" p-2 "
                 value={details.email}
@@ -188,6 +201,7 @@ export default function Form({ type }: { type: 'Login' | 'Signup' }) {
               type="text"
               name="username"
               id="username"
+              required
               key={'username'}
               className="p-2"
               value={details.username}
@@ -204,6 +218,7 @@ export default function Form({ type }: { type: 'Login' | 'Signup' }) {
             <input
               type="password"
               name="password"
+              required
               id="password"
               className=" p-2"
               value={details.password}
