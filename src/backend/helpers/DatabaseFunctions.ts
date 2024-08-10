@@ -6,7 +6,6 @@ export async function loginUser(username: string, password: string, connection: 
   user: string,
   id: string
 }> {
-
   return new Promise((res) => {
     try {
       const query = `SELECT id, username, password FROM Users where username = ?`
