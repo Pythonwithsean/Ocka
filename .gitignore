@@ -39,11 +39,6 @@ yarn-error.log*
 .env.development.local
 .env.test.local
 .env.production.local
-=======
->>>>>>> 243759e ([update] change gitignore)
-=======
-"./"
->>>>>>> ff4081f ([update] change gitignore)
 
 # vercel
 .vercel
