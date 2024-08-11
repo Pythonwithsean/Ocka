@@ -33,6 +33,7 @@ yarn-error.log*
 <<<<<<< HEAD
 <<<<<<< HEAD
 .env*.local
+.local.env
 .env.local
 .local.env
 .env.development.local
