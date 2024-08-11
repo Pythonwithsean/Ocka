@@ -1,95 +1,16 @@
 import mysql from "mysql2"
 import { compareHash } from "./hashing"
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 66c5a05 (change)
 
 export async function loginUser(username: string, password: string, connection: mysql.Connection): Promise<{
   user: string,
   id: string
 }> {
-<<<<<<< HEAD
->>>>>>> bd07835 ([update] fix change)
 
 export async function loginUser(username: string, password: string, connection: mysql.Connection): Promise<{
   user: string,
   id: string
 }> {
-<<<<<<< HEAD
-=======
-	return new Promise((res) => {
-		const query = `SELECT id, username, password FROM Users where username = ?`
-		connection.execute(query, [username], (err, result) => {
-			if ((result as []).length >= 1) {
-				const foo = result[0] as { username: string, password: string, id: string };
-				compareHash(password, foo.password).then(valid => {
-					if (valid === true) {
-						res({
-							id: foo.id,
-							user: foo.username,
-						})
-						return
-					} else {
-						console.error("No User Found")
-						res({
-							id: "",
-							user: ""
-						})
-						return
-					}
-				})
-			}
-		})
-	})
-=======
->>>>>>> refs/remotes/origin/main
-  return new Promise((res) => {
-    try {
-      const query = `SELECT id, username, password FROM Users where username = ?`
-      connection.execute(query, [username], (err, result) => {
-        if ((result as []).length >= 1) {
-          const foo = result[0] as { username: string, password: string, id: string };
-          compareHash(password, foo.password).then(valid => {
-            if (valid === true) {
-              res({
-                id: foo.id,
-                user: foo.username,
-              })
-              return
-            } else {
-              console.error("No User Found")
-              res({
-                id: "",
-                user: ""
-              })
-              return
-            }
-          })
-        } else {
-          console.error("No User Found")
-          res({
-            id: "",
-            user: "",
-          })
-          return
-        }
-      })
-    } catch (err: any) {
-      console.error("Error from try catch")
-      console.error(err.message)
-      res({
-        id: "",
-        user: ""
-      })
-    }
-  })
-<<<<<<< HEAD
-=======
->>>>>>> dfa2cbb (idk)
->>>>>>> refs/remotes/origin/main
 }
 
 export async function createUser(id: string, email: string, username: string, password: string, connection: mysql.Connection): Promise<boolean> {
